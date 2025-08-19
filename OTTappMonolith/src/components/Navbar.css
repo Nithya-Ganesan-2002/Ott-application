@@ -1,0 +1,82 @@
+.ott-navbar {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  display: grid;
+  grid-template-columns: auto 40px 1fr auto;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.ott-navbar__brand {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.ott-navbar__toggle {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  cursor: pointer;
+}
+
+.ott-navbar__links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ott-navbar__links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.ott-navbar__links a.active {
+  background: var(--border-color);
+}
+
+.ott-navbar__auth {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-small {
+  font-size: 0.875rem;
+}
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .ott-navbar {
+    grid-template-columns: auto auto 1fr;
+    grid-auto-rows: auto;
+  }
+  .ott-navbar__links {
+    overflow-x: auto;
+  }
+}

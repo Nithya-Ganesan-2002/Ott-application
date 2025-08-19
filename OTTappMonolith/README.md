@@ -1,82 +1,33 @@
-# Lightweight React Template for KAVIA
+# OTT Monolith React Frontend
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+A single-container React app that encapsulates UI, routing, centralized state, authentication/session, and theme management for a lightweight OTT experience. No external APIs; all logic is internal.
 
-## Features
+## Key Features
+- Application initialization with ReactDOM.createRoot and StrictMode (see `src/index.js`)
+- Centralized state via context provider (see `src/context/AppContext.js`)
+- Internal authentication and session handling (see `src/pages/Login.js` and AppContext)
+- Theme management using `data-theme` attribute on the root element
+- Routing with `BrowserRouter`, guarded routes via `AuthGuard` and modular layout (Navbar + Outlet)
+- Responsive, accessible components and pages
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+## App Structure
+- src/context/AppContext.js — global state (theme, user), actions, and persistence
+- src/components/Navbar.js — responsive navbar with theme toggle and auth UI
+- src/components/AuthGuard.js — protects authenticated routes
+- src/layout/MainLayout.js — layout wrapper with Navbar, content Outlet, and footer
+- src/pages/* — feature pages: Home, Browse, Watchlist, Profile, Login
+- src/App.js — Router configuration and provider wiring
+- src/index.js — React app bootstrap
 
-## Getting Started
+## Environment Variables
+Copy `.env.example` to `.env` if needed:
+- `REACT_APP_BASE_PATH` — optional base path for the router (defaults to "/")
 
-In the project directory, you can run:
+## Scripts
+- `npm start` — start dev server
+- `npm test` — run tests in watch mode
+- `npm run build` — build production bundle
 
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### `npm test`
-
-Launches the test runner in interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Customization
-
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-```
-
-### Components
-
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
-
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
-
-## Learn More
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Notes
+- All data is local/in-memory. Extend `AppContext` to persist additional UI state as needed.
+- Pages are accessible and responsive, using semantic markup and system fonts.
